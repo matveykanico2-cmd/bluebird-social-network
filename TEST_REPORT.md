@@ -65,5 +65,6 @@
 | P0 auth security runtime smoke на `PORT=3135` | PASS; register, forged `bb_user` rejected, recovery challenge issued, reset succeeds once, replay rejected |
 | P0 full regression after secure auth/Socket.IO changes | PASS; typecheck, web/API build, web/API/contract tests |
 | production dependency remediation | PASS; Drizzle 0.45.4 + Zod 4.6.7, complete checks green, `npm audit --omit=dev` reports 0 vulnerabilities |
+| `npm run test:e2e` | PASS; Playwright Chromium smoke: auth screen, registration action and recovery action are reachable |
 
 `npm run test:e2e` требует Playwright-сценариев и браузерных бинарников; это остаётся следующим шагом.

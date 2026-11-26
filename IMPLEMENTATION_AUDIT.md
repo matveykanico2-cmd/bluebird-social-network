@@ -30,6 +30,7 @@ npm run test:web               PASS (1 test)
 npm run test:api               PASS (1 test)
 npm run test:contract         PASS (2 tests)
 npm audit --omit=dev          PASS (0 production vulnerabilities; dev-only advisories remain)
+npm run test:e2e               PASS (1 Playwright Chromium smoke test)
 ```
 
 The next vertical slices must add integration coverage for two authenticated users, then close the `partial` rows without marking provider-dependent work as working unless a real provider is configured.
