@@ -23,12 +23,13 @@ Audit baseline: 2026-11-26. Status is based on source code, schema creation/migr
 ## Baseline commands
 
 ```text
-npm ci                         PASS (14 dependency audit advisories reported)
+npm ci                         PASS (initial baseline reported 14 advisories; production dependencies are now clean)
 npm run test:types             PASS
 npm run build                  PASS (Vite chunk-size warning only)
 npm run test:web               PASS (1 test)
 npm run test:api               PASS (1 test)
 npm run test:contract         PASS (2 tests)
+npm audit --omit=dev          PASS (0 production vulnerabilities; dev-only advisories remain)
 ```
 
 The next vertical slices must add integration coverage for two authenticated users, then close the `partial` rows without marking provider-dependent work as working unless a real provider is configured.
