@@ -14,6 +14,8 @@ cp .env.example .env
 npm run dev
 ```
 
+При использовании окружения, которое отключает install scripts для native-пакетов, API автоматически выполняет `npm rebuild better-sqlite3` перед запуском. Поэтому SQLite должен быть доступен после обычного `npm run dev`/`npm run start:nest`.
+
 Web: http://localhost:5173 · API: http://localhost:3000/api/health
 
 Production-проверки: `npm run build`, `npm run test:types`, `npm run test:web`, `npm run test:api`, `npm run test:contract`.

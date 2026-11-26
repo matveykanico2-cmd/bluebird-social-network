@@ -66,5 +66,6 @@
 | P0 full regression after secure auth/Socket.IO changes | PASS; typecheck, web/API build, web/API/contract tests |
 | production dependency remediation | PASS; Drizzle 0.45.4 + Zod 4.6.7, complete checks green, `npm audit --omit=dev` reports 0 vulnerabilities |
 | `npm run test:e2e` | PASS; Playwright Chromium smoke: auth screen, registration action and recovery action are reachable |
+| SQLite native binding recovery smoke на `PORT=3147` | PASS; automatic `prestart:prod` rebuild, `/api/health` 200, `/api/auth/register` 201 |
 
 `npm run test:e2e` требует Playwright-сценариев и браузерных бинарников; это остаётся следующим шагом.

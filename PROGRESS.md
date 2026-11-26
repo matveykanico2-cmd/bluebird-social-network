@@ -67,6 +67,7 @@
 - `npm audit --omit=dev` выявляет обновления `drizzle-orm` и `zod` с major-version change; обновление требует отдельного совместимого среза и не выполнено вслепую.
 - Production-зависимости обновлены: `drizzle-orm` 0.45.4 и Zod 4.6.7 во всех workspaces; `z.record` схемы адаптированы, `npm audit --omit=dev` теперь возвращает 0 vulnerabilities. Dev-only advisories остаются явно отделёнными от production runtime.
 - Добавлена отдельная Playwright-конфигурация и первый browser smoke в `apps/web/e2e`; Chromium установлен, `npm run test:e2e` проходит 1/1.
+- Исправлена причина `Ошибка сети (500)` после установки с отключёнными install scripts: `apps/api` теперь автоматически выполняет `npm rebuild better-sqlite3` перед `start:dev` и `start:prod`; API runtime smoke на чистой временной SQLite-базе вернул health 200 и регистрацию 201.
 - Добавлены якорные deep-links на комментарии (`#comment-{id}`) и оптимистическое переключение реакций с восстановлением кэша при ошибке; проверено `npm run test:web`, `npm run test:api`, `npm run test:contract`, `npm run test:types`.
 - Добавлены API архива истёкших историй (`GET /stories/archive`) и реакций историй (`POST /stories/:id/react`); web/API/contract/type checks проходят.
 - В редактор публикации добавлены кнопки жирного/курсивного/моноширинного текста и подсказка @упоминаний, отображение публикаций поддерживает rich inline text; добавлен UI геометки с браузерной геолокацией и сохранением label/координат.

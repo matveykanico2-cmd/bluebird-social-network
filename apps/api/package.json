@@ -3,8 +3,10 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
+    "prestart:dev": "npm rebuild better-sqlite3",
     "start:dev": "nest start --watch",
     "build": "nest build",
+    "prestart:prod": "npm rebuild better-sqlite3",
     "start:prod": "node dist/main.js",
     "test": "vitest run",
     "db:migrate": "drizzle-kit migrate"
