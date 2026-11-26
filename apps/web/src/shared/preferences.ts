@@ -1,0 +1,5 @@
+export type ClientPreferences={language:'ru'|'en';textScale:number;dataSaver:boolean;uploadQuality:'original'|'balanced'|'compressed';videoQuality:'auto'|'720p'|'480p';autoplay:boolean;reducedMotion:boolean};
+export const defaultPreferences:ClientPreferences={language:'ru',textScale:1,dataSaver:false,uploadQuality:'balanced',videoQuality:'auto',autoplay:true,reducedMotion:false};
+export function readPreferences():ClientPreferences{try{return {...defaultPreferences,...JSON.parse(localStorage.getItem('bluebird-preferences')||'{}')}}catch{return defaultPreferences}}
+export function writePreferences(value:ClientPreferences){localStorage.setItem('bluebird-preferences',JSON.stringify(value));window.dispatchEvent(new CustomEvent('bluebird-preferences',{detail:value}));applyPreferences(value)}
+export function applyPreferences(value:ClientPreferences){document.documentElement.lang=value.language;document.documentElement.style.setProperty('--font-scale',String(value.textScale));document.documentElement.dataset.dataSaver=value.dataSaver?'true':'false';document.documentElement.dataset.reducedMotion=value.reducedMotion?'true':'false'}

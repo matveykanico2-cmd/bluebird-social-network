@@ -1,0 +1,9 @@
+:root{--font-scale:1}
+html{font-size:calc(14px * var(--font-scale))}
+[data-reduced-motion=true]{scroll-behavior:auto}
+.offline{position:fixed;top:0;left:0;right:0;z-index:100;background:#9b2c2c;color:#fff;text-align:center;padding:7px 12px;font-size:.9rem}
+.permissionGrid{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.srOnly{position:fixed;left:-10000px;width:1px;height:1px;overflow:hidden}
+.brandFooter{position:fixed;right:12px;bottom:4px;z-index:5;color:var(--muted);font-size:10px;pointer-events:none}
+.toastStack{position:fixed;right:16px;bottom:18px;z-index:110;display:grid;gap:8px;width:min(360px,calc(100vw - 32px))}.toast{display:flex;justify-content:space-between;gap:12px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:9px;box-shadow:0 8px 26px #0002}.toast[data-kind=error]{border-left-color:var(--danger)}.toast[data-kind=success]{border-left-color:var(--success)}.toast button{border:0;background:transparent;color:var(--muted);cursor:pointer}
+@media(max-width:600px){.permissionGrid{grid-template-columns:1fr}.offline{font-size:.8rem}}

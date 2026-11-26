@@ -1,0 +1,10 @@
+node_modules/
+dist/
+apps/*/dist/
+apps/api/data/
+uploads/
+apps/api/uploads/
+*.tsbuildinfo
+.env
+playwright-report/
+test-results/

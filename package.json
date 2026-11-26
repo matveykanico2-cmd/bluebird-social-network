@@ -1,0 +1,22 @@
+{
+  "name": "bluebird-social",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:api": "npm --workspace apps/api run start:dev",
+    "build": "npm run build:web && npm run build:api",
+    "build:web": "npm --workspace apps/web run build",
+    "build:api": "npm --workspace apps/api run build",
+    "start:nest": "npm --workspace apps/api run start:prod",
+    "test:web": "npm --workspace apps/web run test",
+    "test:api": "npm --workspace apps/api run test",
+    "test:contract": "npm --workspace packages/contract-tests run test",
+    "test:e2e": "npm --workspace apps/web run test:e2e",
+    "test:types": "tsc -b --pretty false",
+    "db:migrate": "npm --workspace apps/api run db:migrate"
+  },
+  "devDependencies": { "concurrently": "^9.1.2", "typescript": "^5.7.2" }
+}
