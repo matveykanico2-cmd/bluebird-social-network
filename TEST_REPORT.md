@@ -61,5 +61,8 @@
 | ручной smoke на `PORT=3100` | PASS; health/register/post/feed/reaction/comment |
 | ручной smoke на `PORT=3101` | PASS; groups list/create/detail, notifications |
 | Socket.IO smoke на `PORT=3102` | PASS; authorized connect, `sync_messages`, `send_message` |
+| roadmap baseline `npm ci` | PASS; clean install, 14 advisories reported by npm audit |
+| P0 auth security runtime smoke на `PORT=3135` | PASS; register, forged `bb_user` rejected, recovery challenge issued, reset succeeds once, replay rejected |
+| P0 full regression after secure auth/Socket.IO changes | PASS; typecheck, web/API build, web/API/contract tests |
 
 `npm run test:e2e` требует Playwright-сценариев и браузерных бинарников; это остаётся следующим шагом.

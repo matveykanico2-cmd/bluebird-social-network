@@ -54,6 +54,17 @@
 Остались незавершёнными сложные модули из полного ТЗ: WebSocket-синхронизация, WebRTC/STUN/TURN/SFU, загрузка и обработка media через sharp/FFmpeg/S3, 2FA/email/SMS/push, группы/роли, сторис/клипы/видео/музыка, платежи/заказы/донаты/реклама, Capacitor/Tauri и полноценная админ-модерация. Нельзя отметить их `[x]` без реальной интеграции и теста.
 
 Следующий шаг: добавить миграции Drizzle и единый auth guard, затем вертикально завершить friends/groups/media с contract и Playwright тестами.
+
+## P0 roadmap slice — 2026-11-26
+
+- Добавлен фактический аудит `IMPLEMENTATION_AUDIT.md` по frontend/API/БД/ACL/тестам.
+- Устранён критичный auth bypass: API и Socket.IO больше не доверяют подделываемой `bb_user`, авторизация выполняется только по серверной session cookie и активному пользователю.
+- Пароли новых аккаунтов получают случайную соль; старый формат хеша мигрирует после успешного входа.
+- Восстановление пароля переведено на двухшаговый одноразовый challenge с TTL, ограничением запросов и явным dev-only `AUTH_DEV_CODES=true`; прямой reset по одному email/телефону отключён.
+- MFA теперь реально блокирует вход до TOTP/одноразового backup-кода; backup-коды удаляются после использования.
+- Для state-changing запросов добавлена проверка `Origin`/`Sec-Fetch-Site`, CORS принимает allowlist origins, production-сессии получают `Secure`/`SameSite=Strict` cookie.
+- `npm ci`, `npm run test:types`, `npm run build`, `npm run test:web`, `npm run test:api`, `npm run test:contract` проходят; runtime smoke recovery/подделанной cookie/replay challenge пройден.
+- `npm audit --omit=dev` выявляет обновления `drizzle-orm` и `zod` с major-version change; обновление требует отдельного совместимого среза и не выполнено вслепую.
 - Добавлены якорные deep-links на комментарии (`#comment-{id}`) и оптимистическое переключение реакций с восстановлением кэша при ошибке; проверено `npm run test:web`, `npm run test:api`, `npm run test:contract`, `npm run test:types`.
 - Добавлены API архива истёкших историй (`GET /stories/archive`) и реакций историй (`POST /stories/:id/react`); web/API/contract/type checks проходят.
 - В редактор публикации добавлены кнопки жирного/курсивного/моноширинного текста и подсказка @упоминаний, отображение публикаций поддерживает rich inline text; добавлен UI геометки с браузерной геолокацией и сохранением label/координат.
